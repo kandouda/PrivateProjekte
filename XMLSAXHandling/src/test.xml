@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<example>
+	<letter>
+		<name>
+			Khaled EL Zein
+		</name>
+		<street>
+			beim Wasserturm 38, Waiblingen
+		</street>
+	</letter>
+	<letter>
+		<name>
+			Khaled EL Zein
+		</name>
+		<street>
+			Georg-Brauchle-Ring 23-25, München
+		</street>
+	</letter>
+	<letter>
+		<name>
+			Khaled EL Zein
+		</name>
+		<street>
+			chare3 al sakhra, al mankubin, Tripoli Libanon
+		</street>
+	</letter>
+</example>
