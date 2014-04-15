@@ -6,7 +6,7 @@
   </welcome-file-list>
   <context-param>
     <param-name>tempfile.dir</param-name>
-    <param-value>uplfiles</param-value>
+    <param-value>tmpuplfiles</param-value>
   </context-param>
   <listener>
   	<listener-class>com.khaled.example.uploaddownloadfile.listener.FileLocationContextListener</listener-class>
