@@ -2,6 +2,7 @@ package com.example.khaled;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -11,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.example.khaled.model.BeerExpert;
 
@@ -31,7 +33,7 @@ public class BeerSelect extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		
 	}
 
 	/**
@@ -39,6 +41,15 @@ public class BeerSelect extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
+		HttpSession session = request.getSession();
+		
+		if(session.isNew()){
+			System.out.println("session ist new " + session.getId());
+		}	else {
+			Date d = new Date(session.getLastAccessedTime() * 1000);
+			System.out.println("session ist alt " + session.getId() + " .last accessd time is " + d);
+		}
+		
 		PrintWriter out = response.getWriter();
 		out.println("Beer selection Advice<br>");
 		String color = request.getParameter("color");
@@ -48,7 +59,10 @@ public class BeerSelect extends HttpServlet {
 		String emailAddress = getServletContext().getInitParameter("developerEmailAddress");
 		request.setAttribute("developerEmailAddress", emailAddress);
 		
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("JSP/result.jsp");
+		System.out.println( "request url before forward " +  request.getRequestURL());
+		System.out.println("Query String before " + request.getQueryString());
+		
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("JSP/result.jsp?name=khaled");
 		requestDispatcher.forward(request, response);
 	}
 

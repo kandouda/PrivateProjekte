@@ -26,18 +26,9 @@
 			String[] checkedOz = request.getParameterValues("sizes");
 			out.println(Arrays.toString(checkedOz));
 			out.println("<br>This is my email address: " + request.getAttribute("developerEmailAddress"));
-								
-			Connection con = (Connection)application.getAttribute("dbCon");
-			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT Name from country where Code='LBN'");
-			
-			while(rs.next()){
-			out.println("Ich komme aus " + rs.getString(1));
-			}
-			
-			stmt.close();
-			con.close();
-
+			System.out.println("request url after forward " + request.getRequestURL());
+			System.out.println("Query String after " + request.getQueryString());
+			System.out.println("original request url after forward " + request.getAttribute("javax.servlet.forward.request_uri"));
 		%>
 	
 </body>
