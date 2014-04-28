@@ -62,7 +62,7 @@ public class BeerSelect extends HttpServlet {
 		System.out.println( "request url before forward " +  request.getRequestURL());
 		System.out.println("Query String before " + request.getQueryString());
 		
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("JSP/result.jsp?name=khaled");
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/JSP/result.jsp?name=khaled");
 		requestDispatcher.forward(request, response);
 	}
 

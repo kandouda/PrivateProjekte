@@ -1,3 +1,4 @@
+<%@page import="com.example.khaled.servlet.listener.MySessionListener"%>
 <%@page import="org.eclipse.jdt.internal.compiler.ast.WhileStatement"%>
 <%@page import="sun.org.mozilla.javascript.internal.ast.WhileLoop"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -26,6 +27,7 @@
 			String[] checkedOz = request.getParameterValues("sizes");
 			out.println(Arrays.toString(checkedOz));
 			out.println("<br>This is my email address: " + request.getAttribute("developerEmailAddress"));
+			out.println("<br>Active Sessions " + MySessionListener.getActiveSessions());
 			System.out.println("request url after forward " + request.getRequestURL());
 			System.out.println("Query String after " + request.getQueryString());
 			System.out.println("original request url after forward " + request.getAttribute("javax.servlet.forward.request_uri"));
