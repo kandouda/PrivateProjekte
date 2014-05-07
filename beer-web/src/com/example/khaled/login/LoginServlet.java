@@ -26,7 +26,11 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		UserBean loggedUser = (UserBean) request.getSession().getAttribute("currentSessionUser");
+		
+		if (loggedUser == null || !loggedUser.valid) {
+			response.sendRedirect("login.jsp");
+		}
 	}
 
 	/**
@@ -44,10 +48,10 @@ public class LoginServlet extends HttpServlet {
 		if (user.isValid()) {
 			HttpSession session = request.getSession(true);
 			session.setAttribute("currentSessionUser", user);
-			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/JSP/beerSelect.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("start.jsp");
 			rd.forward(request, response);
 		} else {
-			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/JSP/invalidLogin.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("invalidLogin.jsp");
 			rd.forward(request, response);
 		}
 	}

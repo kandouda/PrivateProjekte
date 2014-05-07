@@ -18,6 +18,12 @@ import javax.servlet.http.HttpServletResponse;
 public class PrintParams extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		throw new ServletException();
+	}
+	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
