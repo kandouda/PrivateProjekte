@@ -43,15 +43,11 @@ public class BeerSelect extends HttpServlet {
 		response.setContentType("text/html");
 		HttpSession session = request.getSession();
 		
-		if(session.isNew()){
-			System.out.println("session ist new " + session.getId());
-		}	else {
-			Date d = new Date(session.getLastAccessedTime() * 1000);
-			System.out.println("session ist alt " + session.getId() + " .last accessd time is " + d);
-		}
+		String userName = request.getParameter("userName");
+		session.setAttribute("userName", userName);
 		
 		PrintWriter out = response.getWriter();
-		out.println("Beer selection Advice<br>");
+		
 		String color = request.getParameter("color");
 		BeerExpert beerExpert = new BeerExpert();
 		request.setAttribute("styles", beerExpert.getBrands(color));
